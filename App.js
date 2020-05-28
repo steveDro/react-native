@@ -3,56 +3,27 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableWithoutFeedback,
-  TouchableHighlight,
-  Image,
+  Dimensions,
   SafeAreaView,
   Button,
   Alert,
 } from "react-native";
+import {
+  useDimensions,
+  useDeviceOrientation,
+} from "@react-native-community/hooks";
 
 export default function App() {
+  const { landscape } = useDeviceOrientation();
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Hello react native</Text>
-      <Button title="Click Me!" onPress={() => console.log("Clicked")} />
-      <Button title="Click Me 2!" onPress={() => alert("Clicked")} />
-      <Button
-        title="Click Me 3!"
-        // onPress={() =>
-        //   Alert.alert("Alert", "You clicked Me", [
-        //     {
-        //       text: "Yes",
-        //       onPress: () => Alert.alert("Yes clicked", "Why did u click me!"),
-        //     },
-        //     { text: "No" },
-        //   ])
-        // }
-        onPress={() =>
-          Alert.prompt("Prompt", "Message", (text) => console.log(text))
-        }
-      />
-      {/* <Image source={require("./assets/icon.png")} /> */}
-      {/* <TouchableWithoutFeedback onPress={() => console.log("Image tapped")}>
-        <Image
-          source={{
-            width: 200,
-            height: 200,
-            uri: "https://picsum.photos/200/300",
-          }}
-        />
-      </TouchableWithoutFeedback> */}
-      <TouchableHighlight onPress={() => console.log("Image tapped")}>
-        <Image
-          source={{
-            width: 200,
-            height: 200,
-            uri: "https://picsum.photos/200/300",
-          }}
-        />
-      </TouchableHighlight>
-
-      {/* <image source={{ uri: "https://picsum.photos/200/300" }} /> */}
+      <View
+        style={{
+          backgroundColor: "dodgerblue",
+          width: "100%",
+          height: landscape ? "100%" : 30,
+        }}
+      ></View>
     </SafeAreaView>
   );
 }
@@ -61,7 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
