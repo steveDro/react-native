@@ -13,7 +13,7 @@ function Screen({ children, style }) {
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: Constant.statusBarHeight,
+    paddingTop: Constant.statusBarHeight, // Platform code
     flex: 1,
   },
 });
