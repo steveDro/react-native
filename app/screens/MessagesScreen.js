@@ -29,6 +29,8 @@ function MessagesScreen(props) {
     const newMessage = messages.filter((m) => m.id !== message.id);
     setMessages(newMessage);
   };
+
+  console.log(messages);
   return (
     <Screen>
       <FlatList
@@ -45,18 +47,18 @@ function MessagesScreen(props) {
             )}
           />
         )}
-        ItemSeparatorComponent={ListItemSeparator}
-        refreshing={refreshing}
-        onRefresh={() => {
-          setMessages([
-            {
-              id: 2,
-              title: "T2",
-              description: "D2",
-              image: require("../assets/mosh.jpg"),
-            },
-          ]);
-        }}
+        // ItemSeparatorComponent={ListItemSeparator}
+        // refreshing={refreshing}
+        // onRefresh={() => {
+        //   setMessages([
+        //     {
+        //       id: 2,
+        //       title: "T2",
+        //       description: "D2",
+        //       image: require("../assets/mosh.jpg"),
+        //     },
+        //   ]);
+        // }}
       />
     </Screen>
   );

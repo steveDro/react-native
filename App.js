@@ -16,12 +16,10 @@ import { useFormikContext } from "formik";
 import { AppFormField } from "./app/component/forms";
 import ListEditScreen from "./app/screens/ListEditScreen";
 
-const categories = [
-  { label: "Furniture", value: "1" },
-  { label: "Housing", value: "2" },
-  { label: "Clothing", value: "3" },
-];
-
 export default function App() {
-  return <RegisterScreen />;
+  return (
+    <Screen>
+      <MessagesScreen />
+    </Screen>
+  );
 }
