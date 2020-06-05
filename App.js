@@ -23,5 +23,5 @@ const categories = [
 ];
 
 export default function App() {
-  return <ListItem />;
+  return <RegisterScreen />;
 }
