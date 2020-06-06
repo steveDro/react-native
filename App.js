@@ -14,6 +14,13 @@ import {
 } from "@react-native-community/hooks";
 
 export default function App() {
+  // console.log(Dimensions.get("screen"));
+  // const { fontScale, height, width } = Dimensions.get("screen");
+  // console.log(fontScale, height, width);
+
+  console.log(useDimensions());
+  console.log(useDeviceOrientation());
+
   const { landscape } = useDeviceOrientation();
   return (
     <SafeAreaView style={styles.container}>
@@ -21,7 +28,7 @@ export default function App() {
         style={{
           backgroundColor: "dodgerblue",
           width: "100%",
-          height: landscape ? "100%" : 30,
+          height: landscape ? "100%" : "30%",
         }}
       ></View>
     </SafeAreaView>
