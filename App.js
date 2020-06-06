@@ -17,9 +17,5 @@ import { AppFormField } from "./app/component/forms";
 import ListEditScreen from "./app/screens/ListEditScreen";
 
 export default function App() {
-  return (
-    <Screen>
-      <MessagesScreen />
-    </Screen>
-  );
+  return <ListEditScreen />;
 }
