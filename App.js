@@ -6,12 +6,11 @@ export default function App() {
     <View
       style={{
         backgroundColor: "#fff",
+        marginTop: 50,
         flex: 1,
-        flexDirection: "row", // row-reverse, column-reverse, column
+        flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        flexWrap: "wrap",
-        alignContent: "center",
       }}
     >
       <View
@@ -19,41 +18,18 @@ export default function App() {
           backgroundColor: "dodgerblue",
           width: 100,
           height: 300,
+          alignSelf: "flex-end",
+        }}
+      />
+      <View style={{ backgroundColor: "gold", width: 100, height: 200 }} />
+      <View
+        style={{
+          backgroundColor: "tomato",
+          width: 100,
+          height: 300,
           alignSelf: "flex-start",
         }}
       />
-      <View
-        style={{
-          backgroundColor: "gold",
-          width: 100,
-          height: 200,
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: "tomato",
-          width: 100,
-          height: 100,
-        }}
-      />
-      {/* <View
-        style={{
-          backgroundColor: "dodgerblue",
-          flex: 1,
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: "gold",
-          flex: 1,
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: "tomato",
-          flex: 1,
-        }}
-      /> */}
     </View>
   );
 }
