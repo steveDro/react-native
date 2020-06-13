@@ -20,16 +20,16 @@ import AppImagePicker from "./app/component/device_features/ImagePicker";
 import * as ImagePicker from "expo-image-picker";
 
 export default function App() {
-  const [imageUris, setImageUris] = useState([]);
+  // const [imageUris, setImageUris] = useState([]);
 
-  handleAdd = (uri) => {
-    setImageUris([...imageUris, uri]);
-  };
+  // handleAdd = (uri) => {
+  //   setImageUris([...imageUris, uri]);
+  // };
 
-  handleRemove = (uri) => {
-    console.log(uri);
-    setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
-  };
+  // handleRemove = (uri) => {
+  //   console.log(uri);
+  //   setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
+  // };
 
   return (
     <ListEditScreen />
