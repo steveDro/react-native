@@ -1,12 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
-import AppText from "../component/AppText";
+import { StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
 import colors from "../config/colors";
-import ListItem from "../component/list/ListItem";
 import Screen from "../component/Screen";
 import Card from "../component/Card";
+import routes from "../navigation/routes";
 
 const Listings = [
   {
@@ -23,7 +22,7 @@ const Listings = [
   },
 ];
 
-function ListingsScreen(props) {
+function ListingsScreen({ navigation }) {
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -34,6 +33,7 @@ function ListingsScreen(props) {
             title={item.title}
             subTitle={"$" + item.price}
             image={item.image}
+            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
           />
         )}
       />
