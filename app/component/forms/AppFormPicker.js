@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 import { useFormikContext } from "formik";
 
-import AppPicker from "../AppPicker";
+import AppPicker from "../pickers/AppPicker";
 import ErrorMessage from "./ErrorMessage";
 
 function AppFormPicker({

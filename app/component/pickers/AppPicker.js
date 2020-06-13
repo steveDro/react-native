@@ -9,9 +9,9 @@ import {
   FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import defaultStyles from "../config/styles";
-import AppText from "./AppText";
-import Screen from "../component/Screen";
+import defaultStyles from "../../config/styles";
+import AppText from "../AppText";
+import Screen from "../Screen";
 import PickerItem from "./PickerItem";
 
 function AppPicker({
@@ -42,9 +42,6 @@ function AppPicker({
           ) : (
             <AppText style={styles.placeholder}>{placeholder}</AppText>
           )}
-          {/* <AppText style={styles.text}>
-            {selectedItem ? selectedItem.label : placeholder}
-          </AppText> */}
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}

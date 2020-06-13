@@ -4,7 +4,7 @@ import AppText from "../component/AppText";
 import { FlatList } from "react-native-gesture-handler";
 
 import colors from "../config/colors";
-import ListItem from "../component/ListItem";
+import ListItem from "../component/list/ListItem";
 import Screen from "../component/Screen";
 import Card from "../component/Card";
 

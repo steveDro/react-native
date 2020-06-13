@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+import * as Location from "expo-location";
 
 import Screen from "../component/Screen";
 import { Formik } from "formik";
-import { AppFormField, SubmitButton } from "../component/forms";
-import AppFormPicker from "../component/forms/AppFormPicker";
-import CategoryPickerItem from "../component/CategoryPickerItem";
+import {
+  AppFormField,
+  SubmitButton,
+  AppFormPicker,
+  FormImagePicker,
+} from "../component/forms";
+import CategoryPickerItem from "../component/pickers/CategoryPickerItem";
+import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
   price: Yup.number().required().min(1).max(1000).label("Price"),
   categories: Yup.object().required().nullable().label("Categories"),
   description: Yup.string().label("Description"),
+  images: Yup.array().min(1, "Please select at least one image"),
 });
 
 const Categories = [
@@ -73,6 +80,8 @@ const Categories = [
 ];
 
 function ListEditScreen() {
+  const location = useLocation();
+
   return (
     <Screen style={styles.container}>
       <Formik
@@ -81,12 +90,14 @@ function ListEditScreen() {
           price: "",
           categories: null,
           description: "",
+          images: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => console.log(location)}
         validationSchema={validationSchema}
       >
         {() => (
           <>
+            <FormImagePicker name="images" />
             <AppFormField maxLength={255} name="title" placeholder="Title" />
             <AppFormField
               keyboardType="numeric"
