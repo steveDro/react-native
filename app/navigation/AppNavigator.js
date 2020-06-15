@@ -25,6 +25,7 @@ const AppNavigator = () => {
         component={ListEditScreen}
         options={{
           //   tabBarButton: () => <NewListingButton />,
+          title: "Listings",
           tabBarIcon: ({ size, color }) => (
             <MaterialCommunityIcons
               name="plus-circle"

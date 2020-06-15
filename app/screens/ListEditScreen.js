@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
-import * as Location from "expo-location";
 
 import Screen from "../component/Screen";
 import { Formik } from "formik";
@@ -13,6 +12,8 @@ import {
 } from "../component/forms";
 import CategoryPickerItem from "../component/pickers/CategoryPickerItem";
 import useLocation from "../hooks/useLocation";
+import listingApi from "../api/listings";
+import UploadScreen from "./UploadScreen";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -81,9 +82,33 @@ const Categories = [
 
 function ListEditScreen() {
   const location = useLocation();
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const handleSubmit = async (listing, { resetForm }) => {
+    setProgress(0);
+    setUploadVisible(true);
+
+    const result = await listingApi.addListings(
+      { ...listing, location },
+      (progress) => setProgress(progress)
+    );
+
+    if (!result.ok) {
+      setUploadVisible(false);
+      return alert("Could not save the listing.");
+    }
+
+    resetForm();
+  };
 
   return (
     <Screen style={styles.container}>
+      <UploadScreen
+        onDone={() => setUploadVisible(false)}
+        progress={progress}
+        visible={uploadVisible}
+      />
       <Formik
         initialValues={{
           title: "",
@@ -92,7 +117,7 @@ function ListEditScreen() {
           description: "",
           images: [],
         }}
-        onSubmit={(values) => console.log(location)}
+        onSubmit={handleSubmit} // {(value) => handleSubmit(value)}
         validationSchema={validationSchema}
       >
         {() => (
