@@ -1,8 +1,17 @@
 import { create } from "apisauce";
 import cache from "../utility/cache";
+import authStorage from "../auth/storage";
 
 const apiClient = create({
   baseURL: "http://192.168.8.110:9000/api/",
+});
+
+// calling a protected Api
+apiClient.addAsyncRequestTransform(async (request) => {
+  const authToken = await authStorage.getToken();
+  if (!authToken) return;
+
+  request.headers["x-auth-token"] = authToken;
 });
 
 // how to change the implementation of get method
