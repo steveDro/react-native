@@ -8,8 +8,16 @@ import OfflineNotice from "./app/component/OfflineNotice";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
+import { navigationRef } from "./app/navigation/rootNavigation";
+import { Button } from "react-native";
+import { Notifications } from "expo";
+import Screen from "./app/component/Screen";
+import logger from "./app/utility/logger";
+
+logger.start();
 
 export default function App() {
+  logger.log(new Error("error in app"));
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
@@ -23,10 +31,28 @@ export default function App() {
       <AppLoading startAsync={restoreUser} onFinish={() => setIsReady(true)} />
     );
 
+  const showNotification = () => {
+    Notifications.scheduleLocalNotificationAsync(
+      {
+        title: "Congratulations",
+        body: "Your order was successfully placed.",
+        data: {
+          _displayInForeground: true,
+        },
+      },
+      {
+        time: new Date().getTime() + 6000,
+      }
+    );
+  };
+
   return (
+    // <Screen>
+    //   <Button title="click me" onPress={showNotification} />
+    // </Screen>
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
         {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
     </AuthContext.Provider>

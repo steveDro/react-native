@@ -2,6 +2,7 @@
   "expo": {
     "name": "DoneWithIt",
     "slug": "DoneWithIt",
+    "privacy": "unlisted",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,8 +17,23 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.stevedro.donewithit",
+      "buildNumber": "1.0.0"
     },
-    "description": ""
+    "description": "A market place for selling the stuff you don't need",
+    "extra": {
+      "bugsnag": {
+        "apiKey": "5d245e9e192b92b882795930dd78ede9"
+      }
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
+    }
   }
 }
